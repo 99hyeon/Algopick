@@ -1,4 +1,4 @@
-package com.example.algopick;
+package com.example.algopick.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
