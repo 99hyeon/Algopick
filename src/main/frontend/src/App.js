@@ -1,42 +1,21 @@
-import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AlgoPick from "./components/AlgoPick";
-
-// const AlgoPick = () => {
-//     const [number, setNumber] = useState(null);
-//     const [category, setCategory] = useState(null);
-//     const [loading, setLoading] = useState(false);
-//
-//     const fetchNumber = async () => {
-//         setLoading(true);
-//         try {
-//             const response = await fetch("http://localhost:8080/problems/random");
-//             const data = await response.json();
-//             setNumber(data.id);
-//             setCategory(data.category);
-//         } catch (error) {
-//             console.error("Error fetching number:", error);
-//         }
-//         setLoading(false);
-//     };
-//
-//     return (
-//         <div className="container">
-//             <h1>알고 Pick</h1>
-//             {number !== null && <h2>{number}</h2>}
-//             {category !== null && <h2>{category}</h2>}
-//             <button onClick={fetchNumber} className="pick-button" disabled={loading}>
-//                 {loading ? "로딩 중..." : number === null ? "문제 뽑기" : "다시 뽑기"}
-//             </button>
-//         </div>
-//     );
-// };
+import RandomRecommend from "./components/RandomRecommend";
+import Retry from "./components/Retry";
+import Solved from "./components/Solved";
 
 function App() {
     return (
-        <div>
-            <AlgoPick />
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<AlgoPick />}>
+                    <Route index element={<RandomRecommend />} /> {/* ✅ 초기 세팅 화면 */}
+                    <Route path="retry" element={<Retry />} />
+                    <Route path="solved" element={<Solved />} />
+                </Route>
+            </Routes>
+        </Router>
     );
 }
 
-export default AlgoPick;
+export default App;
