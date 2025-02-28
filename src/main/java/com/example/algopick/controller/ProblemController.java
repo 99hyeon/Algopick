@@ -37,4 +37,10 @@ public class ProblemController {
     public ProblemEntity markProblemAsSolved(@PathVariable(value = "id") Integer id) {
         return unSolvedService.markAsSolved(id);
     }
+
+    // 문제를 푼 것으로 변경 (solved = true)
+    @PatchMapping("/retry/{id}")
+    public ProblemEntity markProblemAsRetry(@PathVariable(value = "id") Integer id) {
+        return unSolvedService.markAsRetry(id);
+    }
 }

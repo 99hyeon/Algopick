@@ -10,6 +10,7 @@ export default function Retry() {
 
     const handleRegister = async () => {
         try {
+            //todo: api 바꾸기
             const response = await axios.patch(`http://localhost:8080/problems/solve/${problemNumber}`);
 
             // 서버에서 보낸 상태 코드 확인

@@ -40,4 +40,13 @@ public class UnSolvedService {
         problem.setSolved(true);  // solved 값 변경
         return problemRepository.save(problem);
     }
+
+    @Transactional
+    public ProblemEntity markAsRetry(Integer id) {
+        ProblemEntity problem = problemRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("해당 ID의 문제를 찾을 수 없음"));
+
+        problem.setRetry(true);  // solved 값 변경
+        return problemRepository.save(problem);
+    }
 }
